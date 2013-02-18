@@ -1,4 +1,6 @@
+.vagrant
 .buildpath
 .project
 .settings
 .DS_Store
+upload-server/src/config/configuration.php
