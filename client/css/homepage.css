@@ -1,0 +1,87 @@
+@CHARSET "UTF-8";
+
+/*
+Color Scheme: #66A3D2
+*/
+
+html, body {
+	/* background-color: #783b3b */
+	background-color: #333;
+	/*
+	background-image: url(../images/ice.jpg);
+	background-attachment: fixed;
+	*/
+}
+
+.row {
+	margin-right: -20px;
+}
+
+
+#header {
+	background-color: #d7d7d7;
+	height: 60px;
+}
+
+#logo {
+	margin-top: 10px;
+}
+
+#titleGraphic, #titleContent {
+	height: 280px;
+}
+
+#titlebar {
+	background-image: url(../images/fridge_wide.jpg);
+}
+
+#titleContent {
+	/* background-color: #b8b7b7; */
+	background-color: #215C89;
+	color: #fff;
+	text-align: center;
+}
+
+#titleContent h1, #titleContent .price {
+	font-family: 'Armata', sans-serif;
+	margin: 20px 10px;
+	line-height: 1.2em;
+}
+
+#titleContent h1 {
+	font-size: 28px;
+	font-wieght: bold;
+}
+
+#titleContent a {
+	color: #66a4d2;
+	text-decoration: underline;
+}
+
+#titleContent a.btn {
+	color: #fff;
+	text-decoration: none;
+}
+
+#titleContent .price {
+	font-size: 24px;
+	font-weight: normal;
+}
+
+#productDescription {
+	background-color: #dcdbdb;
+}
+
+#productPricing {
+	background-color: #fff;
+}
+
+#productPricing table td,
+#productPricing table th {
+	text-align: center;
+}
+
+#footer {
+	background-color: #8a8989;
+	color: #dcdbdb;
+}
