@@ -47,4 +47,6 @@ class AwsS3Adapter {
 		
 		// TODO return
 	}
+	
+	private function computeSignature($method, $contentMd5, $contentType, $headers = array(), )
 }
