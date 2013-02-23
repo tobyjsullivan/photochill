@@ -1,0 +1,8 @@
+{
+  "require": {
+      "aws/aws-sdk-php": "2.0.*"
+  },
+  "autoload": {
+  	"psr-0": { "Chill": "./" }
+  }
+}
