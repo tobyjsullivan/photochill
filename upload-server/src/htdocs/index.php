@@ -11,6 +11,9 @@ require('../library/vendor/autoload.php');
 
 require_once('../config/configuration.php');
 
+use Chill\Configure;
+use Aws\S3\S3Client;
+
 // use \Aws\AwsS3Adapter;
 ?>
 <!DOCTYPE html>
@@ -21,27 +24,25 @@ require_once('../config/configuration.php');
 <body>
 	<h1>Under Construction</h1>
 	<p>We are still developing the upload server.</p>
+	<ul>
 	<?php
-	echo Chill\Configure::read('AWS_ACCESS_KEY_ID');
-// 	$api = new AwsS3Adapter();
-// 	$api->getObjects();
+	echo Configure::read('AWS_ACCESS_KEY_ID');
+	$client = S3Client::factory(array(
+		'key'    => Configure::read(Configure::AWS_ACCESS_KEY_ID),
+		'secret' => Configure::read(Configure::AWS_SECRET_ACCESS_KEY),
+		'region' => Configure::read(Configure::AWS_S3_REGION)
+	));
 
-// 	$api = new S3();
-// 	$api->setAuth(Chill\Configure::read('AWS_ACCESS_KEY_ID'), Chill\Configure::read('AWS_SECRET_ACCESS_KEY'));
-// 	$api->setEndpoint(Chill\Configure::read('AWS_S3_BUCKET_HOSTNAME'));
+	$result = $client->listObjects(array(
+		'Bucket' => Configure::read(Configure::AWS_S3_BUCKET)
+	));
 	
-// 	$buckets = $api->listBuckets(true);
-	
-// 	var_dump($buckets);
+	foreach($result['Contents'] as $object) {
+		?>
+		<li><?php echo $object['Key']; ?></li>
+		<?php
+	}
 	?>
-	<br />
-	<?php 
-// 	$bucket_api = new S3('http://s3-ap-southeast-1.amazonaws.com');
-// 	$bucket_api->setAuth(Chill\Configure::read('AWS_ACCESS_KEY_ID'), Chill\Configure::read('AWS_SECRET_ACCESS_KEY'));
-// 	$bucket_api->setEndpoint(Chill\Configure::read('AWS_S3_BUCKET_HOSTNAME'));
-// 	$objects = $bucket_api->getBucket('rawchill');
-	
-// 	var_dump($objects);
-	?>
+	</ul>
 </body>
 </html>

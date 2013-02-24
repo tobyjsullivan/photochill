@@ -1,7 +1,12 @@
 <?php
 namespace Chill;
 
-class Configure {	
+class Configure {
+	const AWS_S3_BUCKET = 'AWS_S3_BUCKET';
+	const AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID';
+	const AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY';
+	const AWS_S3_REGION = 'AWS_S3_REGION';
+	
 	private static $instance = NULL;
 	
 	private $vals = array();
