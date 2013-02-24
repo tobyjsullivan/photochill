@@ -12,7 +12,7 @@ require('../library/vendor/autoload.php');
 require_once('../config/configuration.php');
 
 use Chill\Configure;
-use Aws\S3\S3Client;
+use Chill\Aws\S3;
 
 // use \Aws\AwsS3Adapter;
 ?>
@@ -26,20 +26,13 @@ use Aws\S3\S3Client;
 	<p>We are still developing the upload server.</p>
 	<ul>
 	<?php
-	echo Configure::read('AWS_ACCESS_KEY_ID');
-	$client = S3Client::factory(array(
-		'key'    => Configure::read(Configure::AWS_ACCESS_KEY_ID),
-		'secret' => Configure::read(Configure::AWS_SECRET_ACCESS_KEY),
-		'region' => Configure::read(Configure::AWS_S3_REGION)
-	));
-
-	$result = $client->listObjects(array(
-		'Bucket' => Configure::read(Configure::AWS_S3_BUCKET)
-	));
+	$s3 = new S3();
 	
-	foreach($result['Contents'] as $object) {
+	$objects = $s3->listObjects('rawchill', 'images');
+	
+	foreach($objects as $object) {
 		?>
-		<li><?php echo $object['Key']; ?></li>
+		<li><?php echo $object->getKey().($object->getSize() == 0 ? '' : ', '.$object->getSize().' bytes'); ?></li>
 		<?php
 	}
 	?>
